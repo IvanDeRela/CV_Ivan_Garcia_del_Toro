@@ -47,7 +47,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'hero.subtitle': 'Estudiante de Relaciones Internacionales · Pasante Consular · Explorador del Mundo',
     'hero.tagline': 'Graduado con distinción en Relaciones Internacionales por la Universidad de Murcia. Pasante en el Consulado General de España en Lyon. Apasionado del mundo, sus culturas y las personas que lo hacen posible.',
     'hero.s1': 'Países', 'hero.s2': 'Ciudades', 'hero.s3': 'Idiomas',
-    'hero.cta1': 'Ver Trayectoria', 'hero.cta2': 'Mis viajes',
+    'hero.cta1': 'Ver Trayectoria', 'hero.cta2': 'Mis viajes', 'hero.cv': 'Descargar CV',
     'about.tag': 'Acerca de mí', 'about.title.1': 'Ciudadano del', 'about.title.2': 'Mundo',
     'about.p1': 'Me llamo Iván, y desde que tengo memoria he sentido que el mundo es demasiado grande y fascinante como para verlo desde un solo ángulo. Esa curiosidad innata me llevó a estudiar Relaciones Internacionales, una disciplina que convierte la complejidad global en mi materia prima de trabajo.',
     'about.quote': '«Cada frontera cruzada es una lección que ningún libro puede darte.»',
