@@ -170,7 +170,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'hero.subtitle': 'Student der Internationalen Beziehungen · Konsularpraktikant · Weltentdecker',
     'hero.tagline': 'Mit Auszeichnung in Internationalen Beziehungen an der Universität Murcia abgeschlossen. Praktikant im Spanischen Generalkonsulat in Lyon.',
     'hero.s1': 'Länder', 'hero.s2': 'Städte', 'hero.s3': 'Sprachen',
-    'hero.cta1': 'Werdegang ansehen', 'hero.cta2': 'Meine Reisen',
+    'hero.cta1': 'Werdegang ansehen', 'hero.cta2': 'Meine Reisen', 'hero.cv': 'Lebenslauf herunterladen',
     'about.tag': 'Über mich', 'about.title.1': 'Bürger der', 'about.title.2': 'Welt',
     'about.p1': 'Mein Name ist Iván, und seit ich denken kann, habe ich gespürt, dass die Welt zu groß und faszinierend ist, um sie nur aus einem einzigen Blickwinkel zu betrachten.',
     'about.quote': '«Jede überquerte Grenze ist eine Lektion, die kein Buch dir geben kann.»',
