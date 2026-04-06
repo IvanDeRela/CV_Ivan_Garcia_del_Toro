@@ -88,7 +88,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'hero.subtitle': 'International Relations Student · Consular Intern · World Explorer',
     'hero.tagline': 'Graduated with distinction in International Relations from the University of Murcia. Interning at the Spanish Consulate General in Lyon. Passionate about the world, its cultures and the people who make it come alive.',
     'hero.s1': 'Countries', 'hero.s2': 'Cities', 'hero.s3': 'Languages',
-    'hero.cta1': 'View Timeline', 'hero.cta2': 'My travels',
+    'hero.cta1': 'View Timeline', 'hero.cta2': 'My travels', 'hero.cv': 'Download CV',
     'about.tag': 'About me', 'about.title.1': 'Citizen of the', 'about.title.2': 'World',
     'about.p1': 'My name is Iván, and for as long as I can remember I have felt that the world is too vast and fascinating to be seen from a single angle. That innate curiosity led me to study International Relations, a discipline that turns global complexity into my raw material.',
     'about.quote': '«Every border crossed is a lesson that no book can teach you.»',
