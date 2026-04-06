@@ -8,7 +8,7 @@ const infoCards = [
   { icon: '📍', labelKey: 'about.cl2', valueKey: 'about.cv2' },
   { icon: '🏛️', labelKey: 'about.cl3', valueKey: 'about.cv3' },
   { icon: '📅', labelKey: 'about.cl4', valueKey: 'about.cv4' },
-  { icon: '✉️', labelKey: 'about.cl5', value: 'ivangarciadeltoro04@gmail.com' },
+  { icon: '✉️', labelKey: 'about.cl5', value: 'garciadeltoroivan@gmail.com' },
   { icon: '🚗', labelKey: 'about.cl6', valueKey: 'about.cv6' },
   { icon: '🌍', labelKey: 'about.cl7', valueKey: 'about.cv7' },
 ];

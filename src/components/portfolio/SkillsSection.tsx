@@ -126,7 +126,6 @@ export default function SkillsSection() {
               </span>
               Iván García del Toro — LinkedIn
             </a>
-            </a>
           </div>
         </div>
       </div>
