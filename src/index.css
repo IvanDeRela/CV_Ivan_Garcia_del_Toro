@@ -1,96 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 216 55% 7%;
+    --foreground: 36 45% 93%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 216 55% 7%;
+    --card-foreground: 36 45% 93%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 216 55% 7%;
+    --popover-foreground: 36 45% 93%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 42 50% 54%;
+    --primary-foreground: 216 55% 7%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 194 72% 38%;
+    --secondary-foreground: 36 45% 93%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 214 40% 16%;
+    --muted-foreground: 36 45% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 216 55% 15%;
+    --accent-foreground: 36 45% 93%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 42 50% 54% / 0.15;
+    --input: 42 50% 54% / 0.15;
+    --ring: 42 50% 54%;
 
-    --radius: 0.5rem;
+    --radius: 0.375rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Custom tokens */
+    --navy: 216 55% 7%;
+    --deep: 216 55% 10%;
+    --ocean: 207 52% 23%;
+    --teal: 194 72% 38%;
+    --gold: 42 50% 54%;
+    --cream: 36 45% 93%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --font-accent: 'Cormorant Garamond', serif;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --gradient-gold: linear-gradient(135deg, hsl(42 50% 54%), hsl(36 60% 70%));
+    --gradient-teal: linear-gradient(135deg, hsl(194 72% 38%), hsl(42 50% 54%));
+    --shadow-gold: 0 8px 32px -8px hsl(42 50% 54% / 0.3);
+    --shadow-card: 0 4px 24px -4px hsl(216 55% 7% / 0.5);
   }
 }
 
@@ -101,5 +62,143 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-body);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(var(--gold) / 0.3);
+    color: hsl(var(--cream));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+  .font-body {
+    font-family: var(--font-body);
+  }
+
+  .text-gold {
+    color: hsl(var(--gold));
+  }
+  .text-teal {
+    color: hsl(var(--teal));
+  }
+  .text-cream {
+    color: hsl(var(--cream));
+  }
+  .text-cream-muted {
+    color: hsl(var(--cream) / 0.65);
+  }
+  .text-cream-dim {
+    color: hsl(var(--cream) / 0.45);
+  }
+
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+  .bg-deep {
+    background-color: hsl(var(--deep));
+  }
+  .bg-ocean {
+    background-color: hsl(var(--ocean));
+  }
+
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+  .border-gold-subtle {
+    border-color: hsl(var(--gold) / 0.2);
+  }
+  .border-teal-subtle {
+    border-color: hsl(var(--teal) / 0.25);
+  }
+
+  .glass-card {
+    background: hsl(var(--cream) / 0.03);
+    border: 1px solid hsl(var(--cream) / 0.08);
+    backdrop-filter: blur(8px);
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+  .glass-card-hover:hover {
+    border-color: hsl(var(--gold) / 0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px -8px hsl(0 0% 0% / 0.4);
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-7 py-3.5 font-bold text-xs tracking-[0.15em] uppercase transition-all duration-300;
+    background: hsl(var(--gold));
+    color: hsl(var(--navy));
+    border-radius: 2px;
+  }
+  .btn-gold:hover {
+    background: hsl(var(--cream));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-7 py-3.5 font-bold text-xs tracking-[0.15em] uppercase transition-all duration-300;
+    background: transparent;
+    color: hsl(var(--cream));
+    border: 1px solid hsl(var(--cream) / 0.3);
+    border-radius: 2px;
+  }
+  .btn-outline:hover {
+    border-color: hsl(var(--gold));
+    color: hsl(var(--gold));
+    transform: translateY(-2px);
+  }
+
+  .section-padding {
+    @apply px-5 py-16 md:px-12 md:py-24 lg:px-20 lg:py-28;
+  }
+
+  .tag-label {
+    @apply text-xs font-bold tracking-[0.25em] uppercase text-teal flex items-center gap-3;
+  }
+  .tag-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: hsl(var(--teal));
+  }
+
+  .progress-bar-track {
+    @apply h-[3px] rounded-sm overflow-hidden;
+    background: hsl(var(--cream) / 0.08);
+  }
+  .progress-bar-fill {
+    @apply h-full rounded-sm;
+    background: var(--gradient-teal);
+    transition: width 1.4s ease;
+  }
+
+  .skill-chip {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold transition-all duration-300 cursor-default;
+    background: hsl(var(--teal) / 0.1);
+    border: 1px solid hsl(var(--teal) / 0.25);
+    border-radius: 3px;
+    color: hsl(var(--cream));
+  }
+  .skill-chip:hover {
+    background: hsl(var(--gold) / 0.15);
+    border-color: hsl(var(--gold) / 0.4);
+    color: hsl(var(--gold));
+    transform: translateY(-2px);
   }
 }
