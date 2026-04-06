@@ -1,4 +1,4 @@
-import { motion, useInView } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { useLang } from '@/hooks/useLang';
 
@@ -18,6 +18,12 @@ export default function SkillsSection() {
   const barsRef = useRef(null);
   const barsInView = useInView(barsRef, { once: true, margin: '-40px' });
   const [barsAnimated, setBarsAnimated] = useState(false);
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+  const decorY = useTransform(scrollYProgress, [0, 1], ['0%', '12%']);
 
   useEffect(() => {
     if (barsInView) setBarsAnimated(true);
@@ -26,12 +32,20 @@ export default function SkillsSection() {
   const skillTags = t('sk.tags').split(',');
 
   return (
-    <section id="skills" className="section-padding bg-deep">
+    <section id="skills" className="section-padding bg-deep relative overflow-hidden" ref={sectionRef}>
+      <motion.div
+        className="absolute -right-20 bottom-0 w-[350px] h-[350px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, hsla(194,72%,38%,0.04) 0%, transparent 70%)',
+          y: decorY,
+        }}
+      />
+
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="mb-14"
       >
         <p className="tag-label mb-3">{t('sk.tag')}</p>
@@ -42,10 +56,22 @@ export default function SkillsSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" ref={barsRef}>
         {/* Languages */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h3 className="text-[0.73rem] tracking-[0.2em] uppercase text-teal mb-6">{t('sk.ltitle')}</h3>
           {languages.map((lang, i) => (
-            <div key={i} className="mb-5">
+            <motion.div
+              key={i}
+              className="mb-5"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
               <div className="flex justify-between items-center mb-1.5">
                 <span className="font-bold text-[0.9rem] text-cream flex items-center gap-1.5">
                   <img src={`https://flagcdn.com/w40/${lang.flag}.png`} width={20} alt="" className="rounded-sm" />
@@ -64,57 +90,72 @@ export default function SkillsSection() {
                   style={{ width: barsAnimated ? `${lang.percent}%` : '0%' }}
                 />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Professional skills */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h3 className="text-[0.73rem] tracking-[0.2em] uppercase text-teal mb-6">{t('sk.ptitle')}</h3>
           <div className="flex flex-wrap gap-1.5">
             {skillTags.map((tag, i) => (
-              <span key={i} className="skill-chip">
+              <motion.span
+                key={i}
+                className="skill-chip"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.2 + i * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.05, y: -2 }}
+              >
                 {skillEmojis[i] || '✦'} {tag.trim()}
-              </span>
+              </motion.span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+        >
           <h3 className="text-[0.73rem] tracking-[0.2em] uppercase text-teal mb-6">{t('sk.ctitle')}</h3>
           <div className="space-y-0">
-            <a
-              href="mailto:garciadeltoroivan@gmail.com"
-              className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-colors duration-300 hover:text-gold"
-              style={{ borderBottom: '1px solid hsla(var(--cream) / 0.06)' }}
-            >
-              <span
-                className="w-[30px] h-[30px] flex items-center justify-center rounded text-sm shrink-0"
-                style={{ background: 'hsla(194,72%,38%,0.1)', border: '1px solid hsla(194,72%,38%,0.2)' }}
+            {[
+              { href: 'mailto:garciadeltoroivan@gmail.com', icon: '✉️', label: 'garciadeltoroivan@gmail.com', hoverColor: '' },
+              { href: 'tel:+34645694245', icon: '📞', label: '+34 645 69 42 45', hoverColor: '' },
+            ].map((item, i) => (
+              <motion.a
+                key={i}
+                href={item.href}
+                className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-colors duration-300 hover:text-gold"
+                style={{ borderBottom: '1px solid hsla(var(--cream) / 0.06)' }}
+                whileHover={{ x: 4 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
-                ✉️
-              </span>
-              garciadeltoroivan@gmail.com
-            </a>
-            <a
-              href="tel:+34645694245"
-              className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-colors duration-300 hover:text-gold"
-              style={{ borderBottom: '1px solid hsla(var(--cream) / 0.06)' }}
-            >
-              <span
-                className="w-[30px] h-[30px] flex items-center justify-center rounded text-sm shrink-0"
-                style={{ background: 'hsla(194,72%,38%,0.1)', border: '1px solid hsla(194,72%,38%,0.2)' }}
-              >
-                📞
-              </span>
-              +34 645 69 42 45
-            </a>
-            <a
+                <span
+                  className="w-[30px] h-[30px] flex items-center justify-center rounded text-sm shrink-0"
+                  style={{ background: 'hsla(194,72%,38%,0.1)', border: '1px solid hsla(194,72%,38%,0.2)' }}
+                >
+                  {item.icon}
+                </span>
+                {item.label}
+              </motion.a>
+            ))}
+            <motion.a
               href="https://www.linkedin.com/in/iv%C3%A1n-garc%C3%ADa-del-toro/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-all duration-300 hover:text-[#0A66C2]"
+              whileHover={{ x: 4 }}
+              transition={{ type: 'spring', stiffness: 300 }}
             >
               <span
                 className="w-[30px] h-[30px] flex items-center justify-center rounded text-sm shrink-0 overflow-hidden"
@@ -125,9 +166,9 @@ export default function SkillsSection() {
                 </svg>
               </span>
               Iván García del Toro — LinkedIn
-            </a>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
