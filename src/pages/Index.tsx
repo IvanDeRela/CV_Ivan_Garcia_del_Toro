@@ -1,4 +1,3 @@
-import { LangProvider } from '@/hooks/useLang';
 import Navbar from '@/components/portfolio/Navbar';
 import HeroSection from '@/components/portfolio/HeroSection';
 import AboutSection from '@/components/portfolio/AboutSection';
@@ -9,7 +8,7 @@ import Footer from '@/components/portfolio/Footer';
 
 const Index = () => {
   return (
-    <LangProvider>
+    <>
       <Navbar />
       <HeroSection />
       <AboutSection />
@@ -17,7 +16,7 @@ const Index = () => {
       <SkillsSection />
       <TravelsSection />
       <Footer />
-    </LangProvider>
+    </>
   );
 };
 
