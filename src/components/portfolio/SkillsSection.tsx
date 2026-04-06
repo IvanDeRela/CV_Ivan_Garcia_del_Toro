@@ -85,7 +85,7 @@ export default function SkillsSection() {
           <h3 className="text-[0.73rem] tracking-[0.2em] uppercase text-teal mb-6">{t('sk.ctitle')}</h3>
           <div className="space-y-0">
             <a
-              href="mailto:ivangarciadeltoro04@gmail.com"
+              href="mailto:garciadeltoroivan@gmail.com"
               className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-colors duration-300 hover:text-gold"
               style={{ borderBottom: '1px solid hsla(var(--cream) / 0.06)' }}
             >
@@ -95,7 +95,20 @@ export default function SkillsSection() {
               >
                 ✉️
               </span>
-              ivangarciadeltoro04@gmail.com
+              garciadeltoroivan@gmail.com
+            </a>
+            <a
+              href="tel:+34645694245"
+              className="flex items-center gap-3 py-3 text-cream-muted text-sm transition-colors duration-300 hover:text-gold"
+              style={{ borderBottom: '1px solid hsla(var(--cream) / 0.06)' }}
+            >
+              <span
+                className="w-[30px] h-[30px] flex items-center justify-center rounded text-sm shrink-0"
+                style={{ background: 'hsla(194,72%,38%,0.1)', border: '1px solid hsla(194,72%,38%,0.2)' }}
+              >
+                📞
+              </span>
+              +34 645 69 42 45
             </a>
             <a
               href="https://www.linkedin.com/in/iv%C3%A1n-garc%C3%ADa-del-toro/"
