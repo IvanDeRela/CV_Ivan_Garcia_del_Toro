@@ -129,7 +129,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'hero.subtitle': 'Étudiant en Relations Internationales · Stagiaire Consulaire · Explorateur du Monde',
     'hero.tagline': 'Diplômé avec mention en Relations Internationales à l\'Université de Murcie. Stagiaire au Consulat Général d\'Espagne à Lyon. Passionné par le monde, ses cultures et les personnes qui le font vivre.',
     'hero.s1': 'Pays', 'hero.s2': 'Villes', 'hero.s3': 'Langues',
-    'hero.cta1': 'Voir le parcours', 'hero.cta2': 'Mes voyages',
+    'hero.cta1': 'Voir le parcours', 'hero.cta2': 'Mes voyages', 'hero.cv': 'Télécharger CV',
     'about.tag': 'À propos', 'about.title.1': 'Citoyen du', 'about.title.2': 'Monde',
     'about.p1': 'Je m\'appelle Iván, et depuis que je me souviens, j\'ai toujours senti que le monde était trop grand et trop fascinant pour n\'être vu que d\'un seul angle.',
     'about.quote': '«Chaque frontière franchie est une leçon qu\'aucun livre ne peut t\'offrir.»',
