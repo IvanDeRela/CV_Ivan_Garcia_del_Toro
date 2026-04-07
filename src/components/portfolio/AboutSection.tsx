@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLang } from '@/hooks/useLang';
 
@@ -26,29 +26,14 @@ function FadeIn({ children, delay = 0, direction = 'up' }: { children: React.Rea
 
 export default function AboutSection() {
   const { t } = useLang();
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '8%']);
 
   return (
-    <section id="about" className="section-padding bg-deep relative overflow-hidden" ref={sectionRef}>
-      {/* Subtle parallax decorative element */}
-      <motion.div
-        className="absolute -right-32 -top-32 w-[400px] h-[400px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, hsla(42,50%,54%,0.04) 0%, transparent 70%)',
-          y: bgY,
-        }}
-      />
-
+    <section id="about" className="section-padding relative overflow-hidden">
       <FadeIn>
-        <div className="mb-14">
+        <div className="mb-12">
           <p className="tag-label mb-3">{t('about.tag')}</p>
-          <h2 className="font-display font-black leading-tight text-cream" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)' }}>
-            {t('about.title.1')} <span className="text-gold">{t('about.title.2')}</span>
+          <h2 className="font-display font-black leading-tight text-foreground" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}>
+            {t('about.title.1')} <span style={{ color: 'hsl(var(--ocean))' }}>{t('about.title.2')}</span>
           </h2>
         </div>
       </FadeIn>
@@ -56,24 +41,21 @@ export default function AboutSection() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
         <div>
           <FadeIn delay={0.1} direction="left">
-            <p className="font-accent italic text-lg leading-relaxed text-cream/90 mb-5">{t('about.p1')}</p>
+            <p className="font-accent italic text-xl leading-relaxed text-foreground/85 mb-6">{t('about.p1')}</p>
           </FadeIn>
           <FadeIn delay={0.2}>
-            <motion.blockquote
-              className="my-7 pl-6 font-accent italic text-xl leading-snug text-gold relative"
-              style={{ borderLeft: '3px solid hsl(42,50%,54%)' }}
-              whileInView={{ borderLeftWidth: [0, 3] }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+            <blockquote
+              className="my-8 pl-6 font-accent italic text-2xl leading-snug relative"
+              style={{ borderLeft: '3px solid hsl(var(--ocean))', color: 'hsl(var(--ocean))' }}
             >
               {t('about.quote')}
-            </motion.blockquote>
+            </blockquote>
           </FadeIn>
           <FadeIn delay={0.3} direction="left">
-            <p className="text-[0.97rem] leading-[1.9] text-cream/80 mb-5">{t('about.p2')}</p>
+            <p className="text-base leading-[1.9] text-muted-foreground mb-5">{t('about.p2')}</p>
           </FadeIn>
           <FadeIn delay={0.4} direction="left">
-            <p className="text-[0.97rem] leading-[1.9] text-cream/80">{t('about.p3')}</p>
+            <p className="text-base leading-[1.9] text-muted-foreground">{t('about.p3')}</p>
           </FadeIn>
         </div>
 
@@ -82,7 +64,7 @@ export default function AboutSection() {
             {infoCards.map((card, i) => (
               <motion.div
                 key={i}
-                className="glass-card-hover rounded p-4"
+                className="glass-card-hover rounded-lg p-5"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -90,16 +72,16 @@ export default function AboutSection() {
                 whileHover={{ scale: 1.03 }}
               >
                 <motion.span
-                  className="text-xl mb-1.5 block"
+                  className="text-2xl mb-2 block"
                   whileHover={{ scale: 1.2, rotate: 10 }}
                   transition={{ type: 'spring', stiffness: 400 }}
                 >
                   {card.icon}
                 </motion.span>
-                <span className="text-[0.68rem] tracking-[0.15em] uppercase text-teal block mb-1">
+                <span className="text-xs tracking-[0.15em] uppercase text-teal block mb-1 font-semibold">
                   {t(card.labelKey)}
                 </span>
-                <span className="text-sm font-bold text-cream">
+                <span className="text-sm font-bold text-foreground">
                   {card.value || t(card.valueKey!)}
                 </span>
               </motion.div>
