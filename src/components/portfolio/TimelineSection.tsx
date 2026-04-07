@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { useLang } from '@/hooks/useLang';
 
@@ -24,7 +24,7 @@ const work: TimelineEntry[] = [
   { dateKey: 'tl.w4d', roleKey: 'tl.w4r', orgKey: 'tl.w4o', descKey: 'tl.w4e' },
 ];
 
-function TimelineItem({ entry, index, side }: { entry: TimelineEntry; index: number; side: 'left' | 'right' }) {
+function TimelineItem({ entry, index }: { entry: TimelineEntry; index: number }) {
   const { t } = useLang();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-40px' });
@@ -32,51 +32,40 @@ function TimelineItem({ entry, index, side }: { entry: TimelineEntry; index: num
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, x: side === 'left' ? -30 : 30 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
-      className="relative pl-7 mb-9 group"
+      initial={{ opacity: 0, y: 24 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+      className="relative pl-8 mb-10 group"
     >
-      {/* Dot with pulse */}
-      <motion.div
-        className="absolute left-0 top-1.5 w-[9px] h-[9px] rounded-full"
-        style={{
-          background: 'hsl(42,50%,54%)',
-          boxShadow: '0 0 0 3px hsla(42,50%,54%,0.2)',
-        }}
-        whileInView={{
-          boxShadow: [
-            '0 0 0 3px hsla(42,50%,54%,0.2)',
-            '0 0 0 8px hsla(42,50%,54%,0.1)',
-            '0 0 0 3px hsla(42,50%,54%,0.2)',
-          ],
-        }}
-        viewport={{ once: true }}
-        transition={{ duration: 2, delay: index * 0.12 }}
-      />
-      {/* Line */}
       <div
-        className="absolute left-1 top-4 w-px"
+        className="absolute left-0 top-2 w-[10px] h-[10px] rounded-full"
         style={{
-          height: 'calc(100% + 16px)',
-          background: 'linear-gradient(to bottom, hsla(42,50%,54%,0.3), transparent)',
+          background: 'hsl(var(--ocean))',
+          boxShadow: '0 0 0 4px hsl(var(--ocean) / 0.15)',
+        }}
+      />
+      <div
+        className="absolute left-[4px] top-5 w-[2px]"
+        style={{
+          height: 'calc(100% + 12px)',
+          background: 'linear-gradient(to bottom, hsl(var(--border)), transparent)',
         }}
       />
 
-      <span className="text-[0.68rem] tracking-[0.15em] uppercase text-teal block mb-1">{t(entry.dateKey)}</span>
-      <h4 className="font-display font-bold text-cream text-base mb-0.5 transition-colors duration-300 group-hover:text-gold">
+      <span className="text-xs tracking-[0.15em] uppercase text-teal block mb-1.5 font-semibold">{t(entry.dateKey)}</span>
+      <h4 className="font-display font-bold text-foreground text-lg mb-1 transition-colors duration-300 group-hover:text-primary">
         {t(entry.roleKey)}
         {entry.hasGpa && (
           <span
-            className="inline-block ml-2 px-2 py-0.5 rounded-full text-[0.7rem] font-bold text-gold align-middle"
-            style={{ background: 'hsla(42,50%,54%,0.15)', border: '1px solid hsla(42,50%,54%,0.3)' }}
+            className="inline-block ml-2 px-2.5 py-0.5 rounded-full text-xs font-bold align-middle"
+            style={{ background: 'hsl(var(--ocean) / 0.1)', color: 'hsl(var(--ocean))', border: '1px solid hsl(var(--ocean) / 0.2)' }}
           >
             8.3/10
           </span>
         )}
       </h4>
-      <span className="text-sm font-bold text-gold block mb-1.5">{t(entry.orgKey)}</span>
-      <p className="text-[0.82rem] leading-relaxed text-cream-muted">{t(entry.descKey)}</p>
+      <span className="text-sm font-bold block mb-2" style={{ color: 'hsl(var(--ocean))' }}>{t(entry.orgKey)}</span>
+      <p className="text-sm leading-relaxed text-muted-foreground">{t(entry.descKey)}</p>
     </motion.div>
   );
 }
@@ -85,81 +74,52 @@ export default function TimelineSection() {
   const { t } = useLang();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-60px' });
-  const sectionRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start end', 'end start'],
-  });
-  const decorY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
 
   return (
-    <section id="timeline" className="section-padding bg-navy relative overflow-hidden" ref={sectionRef}>
-      {/* Parallax decoration */}
-      <motion.div
-        className="absolute -left-40 top-1/4 w-[300px] h-[300px] rounded-full pointer-events-none"
-        style={{
-          background: 'radial-gradient(circle, hsla(194,72%,38%,0.05) 0%, transparent 70%)',
-          y: decorY,
-        }}
-      />
-
+    <section id="timeline" className="section-padding relative overflow-hidden">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 40 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="mb-14"
+        className="mb-12"
       >
         <p className="tag-label mb-3">{t('tl.tag')}</p>
-        <h2 className="font-display font-black leading-tight text-cream" style={{ fontSize: 'clamp(1.8rem, 4vw, 3.2rem)' }}>
-          {t('tl.title.1')} <span className="text-gold">{t('tl.title.2')}</span>
+        <h2 className="font-display font-black leading-tight text-foreground" style={{ fontSize: 'clamp(2rem, 4.5vw, 3.5rem)' }}>
+          {t('tl.title.1')} <span style={{ color: 'hsl(var(--ocean))' }}>{t('tl.title.2')}</span>
         </h2>
       </motion.div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
         <div>
           <motion.h3
-            className="text-[0.76rem] tracking-[0.2em] uppercase text-teal mb-9 flex items-center gap-3"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="text-sm tracking-[0.18em] uppercase text-teal mb-8 flex items-center gap-3 font-bold"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             {t('tl.acol')}
-            <motion.span
-              className="flex-1 h-px"
-              style={{ background: 'linear-gradient(to right, hsla(194,72%,38%,0.4), transparent)' }}
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
+            <span className="flex-1 h-px" style={{ background: 'linear-gradient(to right, hsl(var(--border)), transparent)' }} />
           </motion.h3>
           {academic.map((e, i) => (
-            <TimelineItem key={i} entry={e} index={i} side="left" />
+            <TimelineItem key={i} entry={e} index={i} />
           ))}
         </div>
 
         <div>
           <motion.h3
-            className="text-[0.76rem] tracking-[0.2em] uppercase text-teal mb-9 flex items-center gap-3"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="text-sm tracking-[0.18em] uppercase text-teal mb-8 flex items-center gap-3 font-bold"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
             {t('tl.wcol')}
-            <motion.span
-              className="flex-1 h-px"
-              style={{ background: 'linear-gradient(to right, hsla(194,72%,38%,0.4), transparent)' }}
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-            />
+            <span className="flex-1 h-px" style={{ background: 'linear-gradient(to right, hsl(var(--border)), transparent)' }} />
           </motion.h3>
           {work.map((e, i) => (
-            <TimelineItem key={i} entry={e} index={i} side="right" />
+            <TimelineItem key={i} entry={e} index={i} />
           ))}
         </div>
       </div>

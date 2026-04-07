@@ -1,7 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useLang } from '@/hooks/useLang';
-import heroBg from '@/assets/hero-bg.jpg';
 
 const stats = [
   { value: '17', key: 'hero.s1' },
@@ -16,8 +15,8 @@ function AnimatedCounter({ value }: { value: string }) {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.8, type: 'spring', bounce: 0.4 }}
-      className="font-display font-bold text-gold block"
-      style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
+      className="font-display font-bold block"
+      style={{ fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: 'hsl(var(--ocean))' }}
     >
       {value}
     </motion.span>
@@ -32,72 +31,67 @@ export default function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '15%']);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const ringScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const ringOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const decorScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
+  const decorOpacity = useTransform(scrollYProgress, [0, 0.8], [0.15, 0]);
 
   return (
-    <section id="hero" ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden bg-navy">
-      {/* Parallax background */}
-      <motion.div className="absolute inset-0" style={{ y: bgY, scale: bgScale }}>
-        <img src={heroBg} alt="" className="w-full h-full object-cover opacity-30" width={1920} height={1080} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, hsla(216,55%,7%,0.85) 0%, hsla(216,55%,7%,0.55) 50%, hsla(216,55%,7%,0.9) 100%)' }} />
-      </motion.div>
-
-      {/* Floating particles */}
-      {[...Array(5)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full pointer-events-none"
-          style={{
-            width: 3 + i * 2,
-            height: 3 + i * 2,
-            background: `hsla(42,50%,54%,${0.15 + i * 0.05})`,
-            left: `${15 + i * 18}%`,
-            top: `${20 + i * 12}%`,
-          }}
-          animate={{
-            y: [0, -30 - i * 10, 0],
-            x: [0, 10 + i * 5, 0],
-            opacity: [0.3, 0.7, 0.3],
-          }}
-          transition={{
-            duration: 4 + i * 1.5,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: i * 0.8,
-          }}
-        />
-      ))}
-
-      {/* Animated rings with parallax */}
+    <section
+      id="hero"
+      ref={sectionRef}
+      className="relative min-h-[85vh] flex items-center overflow-hidden"
+      style={{ background: 'linear-gradient(165deg, hsl(220 30% 14%) 0%, hsl(220 40% 22%) 40%, hsl(194 45% 30%) 100%)' }}
+    >
+      {/* Decorative shapes */}
       <motion.div
-        className="absolute right-[-80px] top-1/2 w-[500px] h-[500px] lg:w-[650px] lg:h-[650px] rounded-full pointer-events-none"
+        className="absolute right-[-100px] top-1/2 w-[550px] h-[550px] lg:w-[700px] lg:h-[700px] rounded-full pointer-events-none"
         style={{
-          border: '1px solid hsla(194,72%,38%,0.12)',
-          scale: ringScale,
-          opacity: ringOpacity,
+          border: '1px solid hsla(0,0%,100%,0.08)',
+          scale: decorScale,
+          opacity: decorOpacity,
           translateY: '-50%',
         }}
       >
         <motion.div
-          className="absolute inset-10 rounded-full"
-          style={{ border: '1px solid hsla(42,50%,54%,0.08)' }}
+          className="absolute inset-12 rounded-full"
+          style={{ border: '1px solid hsla(0,0%,100%,0.06)' }}
           animate={{ rotate: 360 }}
           transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
         />
         <motion.div
-          className="absolute inset-20 rounded-full"
-          style={{ border: '1px solid hsla(194,72%,38%,0.06)' }}
+          className="absolute inset-24 rounded-full"
+          style={{ border: '1px solid hsla(0,0%,100%,0.04)' }}
           animate={{ rotate: -360 }}
           transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
         />
       </motion.div>
 
-      {/* Content with parallax */}
+      {/* Floating particles */}
+      {[...Array(4)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full pointer-events-none"
+          style={{
+            width: 4 + i * 2,
+            height: 4 + i * 2,
+            background: `hsla(0,0%,100%,${0.06 + i * 0.03})`,
+            left: `${20 + i * 20}%`,
+            top: `${25 + i * 12}%`,
+          }}
+          animate={{
+            y: [0, -25 - i * 8, 0],
+            opacity: [0.2, 0.5, 0.2],
+          }}
+          transition={{
+            duration: 5 + i * 1.5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            delay: i * 0.6,
+          }}
+        />
+      ))}
+
       <motion.div
         className="relative z-10 px-5 md:px-12 lg:px-20 pt-32 pb-20 max-w-3xl"
         style={{ y: contentY, opacity: contentOpacity }}
@@ -106,15 +100,15 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[0.72rem] tracking-[0.2em] uppercase font-bold mb-6"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.18em] uppercase font-bold mb-7"
           style={{
-            background: 'hsla(194,72%,38%,0.15)',
-            border: '1px solid hsla(194,72%,38%,0.3)',
-            color: 'hsl(194,72%,38%)',
+            background: 'hsla(0,0%,100%,0.12)',
+            border: '1px solid hsla(0,0%,100%,0.2)',
+            color: 'hsla(0,0%,100%,0.9)',
           }}
         >
           <motion.span
-            animate={{ opacity: [1, 0.5, 1] }}
+            animate={{ opacity: [1, 0.4, 1] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
             ●
@@ -126,11 +120,12 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display font-black leading-[1.05] mb-2"
-          style={{ fontSize: 'clamp(2.6rem, 6vw, 5.5rem)' }}
+          className="font-display font-black leading-[1.05] mb-3"
+          style={{ fontSize: 'clamp(3rem, 7vw, 6rem)' }}
         >
           <motion.span
-            className="text-cream inline-block"
+            className="inline-block"
+            style={{ color: 'hsla(0,0%,100%,0.95)' }}
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
@@ -138,7 +133,8 @@ export default function HeroSection() {
             Iván García
           </motion.span>
           <motion.span
-            className="text-gold block"
+            className="block"
+            style={{ color: 'hsl(38,80%,60%)' }}
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -151,8 +147,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="font-accent italic font-light text-cream-muted mb-8 leading-relaxed"
-          style={{ fontSize: 'clamp(1rem, 2vw, 1.3rem)' }}
+          className="font-accent italic font-light mb-8 leading-relaxed"
+          style={{ fontSize: 'clamp(1.1rem, 2.2vw, 1.5rem)', color: 'hsla(0,0%,100%,0.7)' }}
         >
           {t('hero.subtitle')}
         </motion.p>
@@ -161,8 +157,8 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-cream-muted leading-[1.8] max-w-[520px] mb-12"
-          style={{ fontSize: 'clamp(0.88rem, 1.5vw, 1rem)' }}
+          className="leading-[1.9] max-w-[560px] mb-12"
+          style={{ fontSize: 'clamp(0.95rem, 1.5vw, 1.1rem)', color: 'hsla(0,0%,100%,0.6)' }}
         >
           {t('hero.tagline')}
         </motion.p>
@@ -182,7 +178,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.7 + i * 0.1 }}
             >
               <AnimatedCounter value={s.value} />
-              <span className="text-[0.72rem] tracking-[0.15em] uppercase text-cream-dim">
+              <span className="text-xs tracking-[0.15em] uppercase" style={{ color: 'hsla(0,0%,100%,0.5)' }}>
                 {s.label || t(s.key!)}
               </span>
             </motion.div>
@@ -195,12 +191,25 @@ export default function HeroSection() {
           transition={{ duration: 0.6, delay: 0.9 }}
           className="flex gap-4 flex-wrap"
         >
-          <a href="#timeline" className="btn-gold">{t('hero.cta1')}</a>
-          <a href="#travels" className="btn-outline">{t('hero.cta2')}</a>
+          <a
+            href="#about"
+            className="inline-flex items-center justify-center px-7 py-3.5 font-bold text-sm tracking-[0.1em] uppercase rounded-md transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: 'white', color: 'hsl(220,30%,14%)' }}
+          >
+            {t('hero.cta1')}
+          </a>
+          <a
+            href="#travels"
+            className="inline-flex items-center justify-center px-7 py-3.5 font-bold text-sm tracking-[0.1em] uppercase rounded-md transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: 'transparent', color: 'white', border: '2px solid hsla(0,0%,100%,0.3)' }}
+          >
+            {t('hero.cta2')}
+          </a>
           <a
             href="/CV_Ivan_Garcia_del_Toro.pdf"
             download
-            className="btn-outline flex items-center gap-2"
+            className="inline-flex items-center gap-2 justify-center px-7 py-3.5 font-bold text-sm tracking-[0.1em] uppercase rounded-md transition-all duration-300 hover:-translate-y-0.5"
+            style={{ background: 'transparent', color: 'white', border: '2px solid hsla(0,0%,100%,0.3)' }}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -220,14 +229,14 @@ export default function HeroSection() {
         transition={{ delay: 1.5, duration: 0.8 }}
       >
         <motion.div
-          className="w-5 h-8 rounded-full border border-cream/20 flex items-start justify-center p-1"
+          className="w-5 h-9 rounded-full flex items-start justify-center p-1"
+          style={{ border: '1.5px solid hsla(0,0%,100%,0.25)' }}
           animate={{ opacity: [0.4, 0.8, 0.4] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           <motion.div
-            className="w-1 h-2 rounded-full"
-            style={{ background: 'hsl(42,50%,54%)' }}
-            animate={{ y: [0, 8, 0] }}
+            className="w-1 h-2 rounded-full bg-white/60"
+            animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
           />
         </motion.div>
