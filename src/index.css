@@ -53,6 +53,45 @@
     --shadow-gold: 0 8px 32px -8px hsl(38 80% 52% / 0.25);
     --shadow-card: 0 4px 24px -4px hsl(220 20% 16% / 0.08);
   }
+
+  .dark {
+    --background: 220 25% 10%;
+    --foreground: 220 10% 90%;
+
+    --card: 220 22% 14%;
+    --card-foreground: 220 10% 90%;
+
+    --popover: 220 22% 14%;
+    --popover-foreground: 220 10% 90%;
+
+    --primary: 220 65% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 194 55% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 10% 58%;
+
+    --accent: 220 20% 16%;
+    --accent-foreground: 220 10% 90%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 18% 22%;
+    --input: 220 18% 22%;
+    --ring: 220 65% 55%;
+
+    --navy: 220 25% 10%;
+    --deep: 220 20% 16%;
+    --ocean: 220 65% 55%;
+    --teal: 194 55% 50%;
+    --gold: 38 80% 58%;
+    --cream: 220 10% 90%;
+
+    --shadow-card: 0 4px 24px -4px hsl(220 25% 5% / 0.4);
+  }
 }
 
 @layer base {

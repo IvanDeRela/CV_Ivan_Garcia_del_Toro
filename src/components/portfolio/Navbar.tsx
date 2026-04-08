@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon } from 'lucide-react';
 import { useLang } from '@/hooks/useLang';
+import { useTheme } from '@/hooks/useTheme';
 import type { Lang } from '@/data/i18n';
 
 const langs: { code: Lang; flag: string; label: string }[] = [
@@ -11,7 +13,8 @@ const langs: { code: Lang; flag: string; label: string }[] = [
 ];
 
 export default function Navbar() {
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang } = useLang();
+  const { dark, toggle } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -41,6 +44,29 @@ export default function Navbar() {
         </a>
 
         <div className="hidden lg:flex items-center gap-1 ml-auto">
+          {/* Theme toggle */}
+          <button
+            onClick={toggle}
+            className={`p-2 rounded-md transition-all duration-200 mr-2 ${
+              scrolled
+                ? 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                : 'text-white/50 hover:text-white hover:bg-white/10'
+            }`}
+            aria-label={dark ? 'Modo claro' : 'Modo oscuro'}
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={dark ? 'dark' : 'light'}
+                initial={{ rotate: -90, opacity: 0, scale: 0.5 }}
+                animate={{ rotate: 0, opacity: 1, scale: 1 }}
+                exit={{ rotate: 90, opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.2 }}
+              >
+                {dark ? <Sun size={18} /> : <Moon size={18} />}
+              </motion.div>
+            </AnimatePresence>
+          </button>
+
           {langs.map((l) => (
             <button
               key={l.code}
@@ -67,14 +93,27 @@ export default function Navbar() {
         </div>
 
         {/* Mobile hamburger */}
-        <button
-          className="lg:hidden text-2xl p-2 transition-colors"
-          style={{ color: scrolled ? 'hsl(var(--ocean))' : 'white' }}
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
-        >
-          {mobileOpen ? '✕' : '☰'}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={toggle}
+            className={`p-2 rounded-md transition-all duration-200 ${
+              scrolled
+                ? 'text-muted-foreground hover:bg-accent'
+                : 'text-white/60 hover:text-white'
+            }`}
+            aria-label={dark ? 'Modo claro' : 'Modo oscuro'}
+          >
+            {dark ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            className="text-2xl p-2 transition-colors"
+            style={{ color: scrolled ? 'hsl(var(--ocean))' : 'white' }}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Menu"
+          >
+            {mobileOpen ? '✕' : '☰'}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
