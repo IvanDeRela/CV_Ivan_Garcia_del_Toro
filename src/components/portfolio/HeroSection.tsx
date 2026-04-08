@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useLang } from '@/hooks/useLang';
-import profilePhoto from '@/assets/profile-placeholder.png';
+import profilePhoto from '@/assets/profile-photo.jpeg';
 
 const stats = [
   { value: '17', key: 'hero.s1' },
