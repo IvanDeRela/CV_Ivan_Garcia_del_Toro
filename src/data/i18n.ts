@@ -34,10 +34,16 @@ const countryNames: Record<Lang, Record<string, string>> = {
 };
 
 export function getCountries(lang: Lang): Country[] {
-  return countriesBase.map(c => ({
-    ...c,
-    name: countryNames[lang][c.code] || c.code,
-  }));
+  return countriesBase
+    .map(c => ({
+      ...c,
+      name: countryNames[lang][c.code] || c.code,
+      cities: c.cities
+        .split(' · ')
+        .sort((a, b) => a.localeCompare(b, lang))
+        .join(' · '),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name, lang));
 }
 
 export const translations: Record<Lang, Record<string, string>> = {
