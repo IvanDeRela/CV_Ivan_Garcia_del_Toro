@@ -135,7 +135,7 @@ export default function SkillsSection() {
               </motion.a>
             ))}
             <motion.a
-              href="https://www.linkedin.com/in/iv%C3%A1n-garc%C3%ADa-del-toro/"
+              href="https://www.linkedin.com/in/ivan-garcia-del-toro-691849210"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 py-3.5 text-muted-foreground text-sm transition-all duration-300 hover:text-[#0A66C2]"
