@@ -102,7 +102,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'about.p3': 'What captivates me most about international culture is not simply visiting places, but understanding why each society is the way it is — its political systems, economic dynamics, traditions and, above all, its people. I have travelled across 17 countries, and every journey brings a fresh perspective, a new friend and a story worth telling.',
     'about.cl1': 'University', 'about.cv1': 'Univ. of Murcia',
     'about.cl2': 'Current location', 'about.cv2': 'Murcia, Spain',
-    'about.cl3': 'Current position', 'about.cv3': 'Intern — Spanish Consulate',
+    'about.cl3': 'Current position', 'about.cv3': 'Student',
     'about.cl4': 'Date of birth', 'about.cv4': '15 March 2004',
     'about.cl5': 'Email',
     'about.cl6': 'Licence & mobility', 'about.cv6': 'Cat. B · Own vehicle',
