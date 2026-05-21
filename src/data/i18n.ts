@@ -60,7 +60,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'about.p2': 'He tenido el privilegio de vivir en Lille durante mi Erasmus+, donde además de cursar asignaturas en la universidad francesa, impartí talleres de conversación en español para estudiantes locales. Actualmente soy pasante en el Consulado General de España en Lyon, colaborando con el personal diplomático y asistiendo a ciudadanos españoles en el extranjero.',
     'about.p3': 'Lo que más me apasiona de la cultura internacional no es solo visitar lugares, sino entender por qué cada sociedad es como es: sus sistemas políticos, sus dinámicas económicas, sus tradiciones y, sobre todo, sus personas. He recorrido 17 países y en cada viaje me llevo una perspectiva nueva, un amigo diferente y una historia que contar.',
     'about.cl1': 'Universidad', 'about.cv1': 'Univ. de Murcia',
-    'about.cl2': 'Ubicación actual', 'about.cv2': 'Lyon, Francia',
+    'about.cl2': 'Ubicación actual', 'about.cv2': 'Murcia, España',
     'about.cl3': 'Posición actual', 'about.cv3': 'Pasante — Consulado España',
     'about.cl4': 'Fecha de nacimiento', 'about.cv4': '15 de marzo de 2004',
     'about.cl5': 'Email',
