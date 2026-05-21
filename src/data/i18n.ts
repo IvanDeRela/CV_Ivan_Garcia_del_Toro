@@ -123,7 +123,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'sk.l2': 'English', 'sk.l2lv': 'C1 · Cambridge', 'sk.l2ct': 'July 2025',
     'sk.l3': 'French', 'sk.l3lv': 'B2 · DELF', 'sk.l3ct': 'June 2022',
     'sk.l4': 'German', 'sk.l4lv': 'A1.2 · UMU', 'sk.l4ct': 'November 2024',
-    'sk.tags': 'Advanced Excel,MS Office Suite,Teamwork,Communication,Multiculturalism,Formal writing,Diplomatic protocol,Political analysis,Document management,Proactivity,Negotiation,Geopolitics',
+    'sk.tags': 'Advanced Excel,MS Office Suite,Teamwork,Communication,Multiculturalism,Formal writing,Diplomatic protocol,Political analysis,Document management,Proactivity,Negotiation,Geopolitics,Artificial Intelligence,Prompt Engineering,ChatGPT & Claude,AI Automation,Python Programming,Generative AI,AI-driven Data Analysis,No-Code/AI Tools,AI Ethics,AI-assisted Research',
     'tr.tag': 'Global Exploration', 'tr.title.1': 'Countries &', 'tr.title.2': 'Cities Visited',
     'tr.continents': 'Continents',
     'tr.desc': 'Every destination has been an opportunity to understand the world beyond academic texts.',
