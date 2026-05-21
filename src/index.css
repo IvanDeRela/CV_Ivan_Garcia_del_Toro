@@ -112,7 +112,9 @@
 
   html {
     scroll-behavior: smooth;
+    font-size: 19px;
   }
+
 }
 
 @layer components {
