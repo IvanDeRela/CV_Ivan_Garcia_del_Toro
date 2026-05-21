@@ -101,7 +101,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'about.p2': 'I had the privilege of living in Lille during my Erasmus+ year, where in addition to attending courses at the French university, I led Spanish conversation workshops for local students. I am currently interning at the Spanish Consulate General in Lyon, collaborating with diplomatic staff and assisting Spanish citizens abroad.',
     'about.p3': 'What captivates me most about international culture is not simply visiting places, but understanding why each society is the way it is — its political systems, economic dynamics, traditions and, above all, its people. I have travelled across 17 countries, and every journey brings a fresh perspective, a new friend and a story worth telling.',
     'about.cl1': 'University', 'about.cv1': 'Univ. of Murcia',
-    'about.cl2': 'Current location', 'about.cv2': 'Lyon, France',
+    'about.cl2': 'Current location', 'about.cv2': 'Murcia, Spain',
     'about.cl3': 'Current position', 'about.cv3': 'Intern — Spanish Consulate',
     'about.cl4': 'Date of birth', 'about.cv4': '15 March 2004',
     'about.cl5': 'Email',
