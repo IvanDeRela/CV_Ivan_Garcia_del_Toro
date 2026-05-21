@@ -164,7 +164,7 @@ export const translations: Record<Lang, Record<string, string>> = {
     'sk.l2': 'Anglais', 'sk.l2lv': 'C1 · Cambridge', 'sk.l2ct': 'Juillet 2025',
     'sk.l3': 'Français', 'sk.l3lv': 'B2 · DELF', 'sk.l3ct': 'Juin 2022',
     'sk.l4': 'Allemand', 'sk.l4lv': 'A1.2 · UMU', 'sk.l4ct': 'Novembre 2024',
-    'sk.tags': 'Excel Avancé,Suite MS Office,Travail en équipe,Communication,Multiculturalisme,Rédaction formelle,Protocole diplomatique,Analyse politique,Gestion documentaire,Proactivité,Négociation,Géopolitique',
+    'sk.tags': 'Excel Avancé,Suite MS Office,Travail en équipe,Communication,Multiculturalisme,Rédaction formelle,Protocole diplomatique,Analyse politique,Gestion documentaire,Proactivité,Négociation,Géopolitique,Intelligence Artificielle,Prompt Engineering,ChatGPT & Claude,Automatisation par IA,Programmation Python,IA Générative,Analyse de données avec IA,Outils No-Code/IA,Éthique de l\'IA,Recherche assistée par IA',
     'tr.tag': 'Exploration Mondiale', 'tr.title.1': 'Pays &', 'tr.title.2': 'Villes Visitées',
     'tr.continents': 'Continents',
     'tr.desc': 'Chaque destination a été une occasion de comprendre le monde au-delà des textes académiques.',
