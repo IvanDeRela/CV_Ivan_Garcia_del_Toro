@@ -26,7 +26,7 @@ function AnimatedCounter({ value }: { value: string }) {
 }
 
 export default function HeroSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const sectionRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
