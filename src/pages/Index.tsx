@@ -6,10 +6,11 @@ import AboutSection from '@/components/portfolio/AboutSection';
 import TimelineSection from '@/components/portfolio/TimelineSection';
 import SkillsSection from '@/components/portfolio/SkillsSection';
 import TravelsSection from '@/components/portfolio/TravelsSection';
+import ContactSection from '@/components/portfolio/ContactSection';
 import Footer from '@/components/portfolio/Footer';
 import { useLang } from '@/hooks/useLang';
 
-const tabs = ['about', 'timeline', 'skills', 'travels'] as const;
+const tabs = ['about', 'timeline', 'skills', 'travels', 'contact'] as const;
 type Tab = typeof tabs[number];
 
 const tabComponents: Record<Tab, React.ComponentType> = {
@@ -17,6 +18,7 @@ const tabComponents: Record<Tab, React.ComponentType> = {
   timeline: TimelineSection,
   skills: SkillsSection,
   travels: TravelsSection,
+  contact: ContactSection,
 };
 
 const tabIcons: Record<Tab, string> = {
@@ -24,6 +26,7 @@ const tabIcons: Record<Tab, string> = {
   timeline: '📋',
   skills: '⚡',
   travels: '🌍',
+  contact: '✉️',
 };
 
 const tabKeyMap: Record<Tab, string> = {
@@ -31,6 +34,7 @@ const tabKeyMap: Record<Tab, string> = {
   timeline: 'nav.timeline',
   skills: 'nav.skills',
   travels: 'nav.world',
+  contact: 'nav.contact',
 };
 
 const Index = () => {
