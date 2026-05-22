@@ -212,9 +212,8 @@ export default function HeroSection() {
             >
               {t('hero.cta2')}
             </a>
-            <a
-              href="/CV_Ivan_Garcia_del_Toro.pdf"
-              download
+            <button
+              onClick={() => generateCv(lang)}
               className="inline-flex items-center gap-2 justify-center px-7 py-3.5 font-bold text-sm tracking-[0.1em] uppercase rounded-md transition-all duration-300 hover:-translate-y-0.5"
               style={{ background: 'transparent', color: 'white', border: '2px solid hsla(0,0%,100%,0.3)' }}
             >
@@ -224,7 +223,7 @@ export default function HeroSection() {
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
               {t('hero.cv')}
-            </a>
+            </button>
           </motion.div>
         </motion.div>
 
