@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { useLang } from '@/hooks/useLang';
+import { generateCv } from '@/lib/generateCv';
 import profilePhoto from '@/assets/profile-photo.jpeg';
 
 const stats = [
